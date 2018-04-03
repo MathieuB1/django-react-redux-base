@@ -17,5 +17,35 @@
     "activation_key": "64f5b041-81ed-4251-bf62-54b9c0a14848"
   },
   "pk": "7c32d60d-6312-42f6-a73a-22da56b07374"
+},
+{
+  "model": "faq.FaqList",
+  "fields": {
+    "created": "2018-04-01T12:41:00.000Z",
+    "group": "Question",
+    "title": "Question",
+    "text": "faq_1st"
+  },
+  "pk": "2"
+},
+{
+  "model": "faq.FaqList",
+  "fields": {
+    "created": "2018-04-01T12:41:00.000Z",
+    "group": "Question",
+    "title": "Question2",
+    "text": "faq_2nd"
+  },
+  "pk": "3"
+},
+{
+  "model": "faq.FaqList",
+  "fields": {
+    "created": "2018-04-01T12:41:00.000Z",
+    "group": "Question2",
+    "title": "Question1",
+    "text": "faq_1st"
+  },
+  "pk": "4"
 }
 ]

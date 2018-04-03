@@ -7,6 +7,9 @@ import PropTypes from 'prop-types';
 import { authLogoutAndRedirect } from './actions/auth';
 import './styles/main.scss';
 
+
+
+    
 class App extends React.Component {
     static propTypes = {
         isAuthenticated: PropTypes.bool.isRequired,
@@ -14,7 +17,8 @@ class App extends React.Component {
         dispatch: PropTypes.func.isRequired,
         location: PropTypes.shape({
             pathname: PropTypes.string
-        })
+        }),
+        
     };
 
     static defaultProps = {
@@ -37,6 +41,10 @@ class App extends React.Component {
         this.props.dispatch(push('/protected'));
     };
 
+    goToFaq = () => {
+        this.props.dispatch(push('/faq'));
+    };
+
     render() {
         const homeClass = classNames({
             active: this.props.location && this.props.location.pathname === '/'
@@ -46,6 +54,9 @@ class App extends React.Component {
         });
         const loginClass = classNames({
             active: this.props.location && this.props.location.pathname === '/login'
+        });
+        const FaqClass = classNames({
+            active: this.props.location && this.props.location.pathname === '/faq'
         });
 
         return (
@@ -65,17 +76,52 @@ class App extends React.Component {
                                 <span className="icon-bar" />
                             </button>
                             <a className="navbar-brand" onClick={this.goToIndex}>
-                                Django React Redux Demo
+                                ICO project
                             </a>
                         </div>
                         <div className="collapse navbar-collapse" id="top-navbar">
+
+
+
+                            <ul className="nav navbar-nav navbar-left">
+                                <li className={homeClass}>
+                                    <a className="js-go-to-ecosystem-button" onClick={this.goToIndex}>
+                                        <i className="fa fa-home" /> Ecosystem
+                                    </a>
+                                </li>
+                                <li className={protectedClass}>
+                                    <a className="js-go-to-adoption-button" onClick={this.goToProtected}>
+                                        <i className="fa fa-lock" /> Adoption
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="js-go-to-token-button" onClick={this.logout}>
+                                        Token
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="js-go-to-SaleRoadmap-button" onClick={this.logout}>
+                                    SaleRoadmap
+                                    </a>
+                                </li>
+                                <li>
+                                    <a className="js-go-to-team-button" onClick={this.logout}>
+                                        Team
+                                    </a>
+                                </li>
+                                <li className={FaqClass}>
+                                    <a className="js-go-to-faq-button" onClick={this.goToFaq}>
+                                    FAQ
+                                    </a>
+                                </li>
+                            </ul>
+
+
+
+
                             {this.props.isAuthenticated ?
                                 <ul className="nav navbar-nav navbar-right">
-                                    <li className={homeClass}>
-                                        <a className="js-go-to-index-button" onClick={this.goToIndex}>
-                                            <i className="fa fa-home" /> Home
-                                        </a>
-                                    </li>
+
                                     <li className={protectedClass}>
                                         <a className="js-go-to-protected-button" onClick={this.goToProtected}>
                                             <i className="fa fa-lock" /> Protected
@@ -89,11 +135,6 @@ class App extends React.Component {
                                 </ul>
                                 :
                                 <ul className="nav navbar-nav navbar-right">
-                                    <li className={homeClass}>
-                                        <a className="js-go-to-index-button" onClick={this.goToIndex}>
-                                            <i className="fa fa-home" /> Home
-                                        </a>
-                                    </li>
                                     <li className={loginClass}>
                                         <a className="js-login-button" onClick={this.goToLogin}>
                                             <i className="fa fa-home" /> Login
